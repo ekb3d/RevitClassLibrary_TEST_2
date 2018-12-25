@@ -1,35 +1,39 @@
-// This is an independent project of an individual developer. Dear PVS-Studio, please check it.
-// PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
-
-/* RevitClassLibrary_TEST_2
- * Class1.cs
- * 
- * © Merkulov, 2018
- */
-#region Namespaces
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using Autodesk.Revit.DB;
+using Autodesk.Revit.DB.Architecture;
+using Autodesk.Revit.UI;
+using Autodesk.Revit.UI.Selection;
 using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
-using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
-using System.Resources;
-using System.Reflection;
-using System.Drawing;
-using System.Windows.Media.Imaging;
-using System.Windows.Interop;
-using System.IO;
-using WPF = System.Windows;
-using System.Linq;
-using Bushman.RevitDevTools;
-using Merkulov.RevitClassLibrary_TEST_2.Properties;
-#endregion
 
-namespace Merkulov.RevitClassLibrary_TEST_2
+[TransactionAttribute(TransactionMode.Manual)]
+[RegenerationAttribute(RegenerationOption.Manual)]
+public class Lab1PlaceGroup : IExternalCommand
 {
-
-    public sealed partial class Class1
+    public Result Execute(
+    ExternalCommandData commandData,
+    ref string message,
+    ElementSet elements)
     {
-
+        //Получение объектов приложения и документа
+        UIApplication uiApp = commandData.Application;
+        Document doc = uiApp.ActiveUIDocument.Document;
+        //Определение объекта-ссылки для занесения результата указания
+        Reference pickedRef = null;
+        //Указание группы
+        Selection sel = uiApp.ActiveUIDocument.Selection;
+        pickedRef = sel.PickObject(ObjectType.Element,
+        "Выберите группу");
+        Element elem = doc.GetElement(pickedRef);        Group group = elem as Group;
+        //Указание точки
+        XYZ point = sel.PickPoint("Укажите точку для размещения группы");
+        //Размещение группы
+        Transaction trans = new Transaction(doc);
+        trans.Start("Lab");
+        doc.Create.PlaceGroup(point, group.GroupType);
+        trans.Commit();
+        return Result.Succeeded;
     }
 }
