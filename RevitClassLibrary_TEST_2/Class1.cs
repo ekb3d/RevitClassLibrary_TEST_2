@@ -21,7 +21,7 @@ public class Lab1PlaceGroup : IExternalCommand
         //==========Исправлено !!!
         //==========Исправлено !!! 
 
-        UIApplication uiApp = commandData.Application; // удалить строку            !! проверка
+        // удалить строку            !! проверка
         //==========Исправлено !!!
         //Получение объектов приложения и документа
         UIApplication uiApp = commandData.Application;
