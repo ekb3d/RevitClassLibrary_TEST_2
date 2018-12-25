@@ -17,6 +17,12 @@ public class Lab1PlaceGroup : IExternalCommand
     ref string message,
     ElementSet elements)
     {
+
+        //==========Исправлено !!!
+        //==========Исправлено !!! 
+
+        UIApplication uiApp = commandData.Application; // удалить строку            !! проверка
+        //==========Исправлено !!!
         //Получение объектов приложения и документа
         UIApplication uiApp = commandData.Application;
         Document doc = uiApp.ActiveUIDocument.Document;
@@ -26,7 +32,8 @@ public class Lab1PlaceGroup : IExternalCommand
         Selection sel = uiApp.ActiveUIDocument.Selection;
         pickedRef = sel.PickObject(ObjectType.Element,
         "Выберите группу");
-        Element elem = doc.GetElement(pickedRef);        Group group = elem as Group;
+        Element elem = doc.GetElement(pickedRef);
+        Group group = elem as Group;
         //Указание точки
         XYZ point = sel.PickPoint("Укажите точку для размещения группы");
         //Размещение группы
