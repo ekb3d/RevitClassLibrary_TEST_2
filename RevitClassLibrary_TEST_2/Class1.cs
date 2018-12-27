@@ -23,6 +23,9 @@ public class Lab1PlaceGroup : IExternalCommand
 
         // удалить строку            !! проверка
         //==========Исправлено !!!
+
+        //==========правка прокта 27_12_2018 р утро !!!!!!!!!!!
+
         //Получение объектов приложения и документа
         UIApplication uiApp = commandData.Application;
         Document doc = uiApp.ActiveUIDocument.Document;
