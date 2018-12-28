@@ -29,6 +29,7 @@
     <StartProgram>$(ProgramW6432)\Autodesk\Revit 2018\Revit.exe</StartProgram>
     <StartArguments>/language ENU</StartArguments>
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -116,5 +117,7 @@
   <PropertyGroup>
     <PostBuildEvent>
     </PostBuildEvent>
+    <StartAction>Program</StartAction>
+    <StartProgram>C:\Program Files\Autodesk\Revit Architecture 201x\Program\Revit.exe</StartProgram>
   </PropertyGroup>
 </Project>
