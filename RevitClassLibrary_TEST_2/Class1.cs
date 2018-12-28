@@ -35,6 +35,8 @@ public class Lab1PlaceGroup : IExternalCommand
         //==========правка прокта 27_12_2018 вечер  !!!!!!!!!!! (17.12)
         //=========================================================
 
+        // ===  правка прокта 28_12_2018 р утро =======!!!!!!!!!!!
+
         UIApplication uiApp = commandData.Application;
         Document doc = uiApp.ActiveUIDocument.Document;
         //Определение объекта-ссылки для занесения результата указания
